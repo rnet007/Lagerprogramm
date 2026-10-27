@@ -1,0 +1,49 @@
+{
+  "name": "lagerraum",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --strictPort",
+    "build": "tsc -b && vite build",
+    "test": "vitest run",
+    "build:standalone": "vite build --config vite.standalone.config.ts",
+    "start": "tsx server/index.ts",
+    "admin:init": "tsx server/bootstrap.ts",
+    "check:server": "tsc --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --esModuleInterop --skipLibCheck --allowImportingTsExtensions server/*.ts",
+    "admin:reset": "tsx server/reset-user.ts",
+    "preview:cloudflare": "wrangler pages dev dist --ip 127.0.0.1 --port 8788",
+    "check:cloudflare": "tsc --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --esModuleInterop --skipLibCheck --lib ES2022,DOM \"functions/api/[[path]].ts\"",
+    "build:cloudflare": "npm run build && wrangler pages functions build --outdir .cloudflare-build"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.0.0",
+    "@react-three/fiber": "^9.0.0",
+    "@supabase/supabase-js": "^2.118.0",
+    "better-auth": "^1.7.14",
+    "better-sqlite3": "^13.0.3",
+    "exceljs": "^4.4.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.180.0",
+    "tsx": "^4.23.15"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261027.1",
+    "@playwright/test": "^1.50.0",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.180.0",
+    "miniflare": "^5.20261023.0-beta",
+    "typescript": "^5.7.0",
+    "vite": "^6.1.0",
+    "vite-plugin-singlefile": "^2.3.0",
+    "vitest": "^3.0.0",
+    "wrangler": "^4.153.0"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}

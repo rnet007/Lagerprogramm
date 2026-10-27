@@ -1,0 +1,9 @@
+.git
+node_modules
+dist
+standalone
+server-data
+.env
+.env.*
+*.sqlite*
+*.tsbuildinfo
